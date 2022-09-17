@@ -15,8 +15,17 @@ roman = user_input.upper()
 for letter in roman:
     list1.append(letter)
     list2.append(letter)
+def validation():
+    for g in list2:
+        if g in dictionary:
+            pass
+        else:
+            print("Please enter only roman symbols")
+            return False
+    return True
 
-def check_order():
+
+def check():
 
 
     
@@ -99,6 +108,7 @@ def calculate():
             sum=sum+dictionary.get(list1[n])
             n+=1
     print(sum)
-    
-if check_order():
-    calculate()
+
+if validation():
+    if check():
+        calculate()
