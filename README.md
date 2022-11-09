@@ -1,2 +1,1 @@
-# Leetcode
-# Some algorithms of some problems
+# Solutions of some problems from Leetcode

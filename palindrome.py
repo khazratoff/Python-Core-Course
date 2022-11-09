@@ -16,3 +16,6 @@ class Solution:
         return False
 
 
+s = Solution()
+n = int(input("Input number: "))
+print(s.isPalindrome(n))
