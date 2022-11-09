@@ -1,13 +1,9 @@
-a = [1,2,3,4,4]
-def do():
-    pass
-
-class Hello:
-    pass
-
-print(type(a))
-print(type(do))
-print(type(Hello))
-print(id(a))
-a.append(2)
-print(id(a))
+number = int(input("Number: "))
+init = 0
+sum = 0
+while init < number:
+    if init % 2:
+        continue
+    sum = sum + init
+    init = init + 1
+print(sum)

@@ -1,22 +1,11 @@
-import math
-user_input = int(input('some number: '))
+n = int(input("Type any number: "))
+divisor = 2
+is_prime = True
+while divisor < n:
+    if not n % divisor:
+        is_prime = False
+        break
+    divisor+=divisor
 
-square_root = math.sqrt(user_input)
-n = 1
-s = 0
-if square_root == 1:
-    print('1 is neither prime nor non-prime number')
-else:
-    while n <= square_root:
-        if user_input % n == 0:
-            s+=1
-        n+=1
-
-    if s > 1:
-        print('This number is not prime')
-    else:
-        print('prime')
-
- 
-
- 
+ans = "Prime" if is_prime == True else "Not prime"
+print(ans)
