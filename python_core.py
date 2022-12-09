@@ -151,10 +151,10 @@
 # print(generate_squares(5))
 
 #Task 2
-friends = [
-    {'name': 'Sam', 'gender': 'male', 'sport': 'Basketball'},
-    {'name': 'Emily', 'gender': 'female', 'sport': 'volleyball'},
-]
+# friends = [
+#     {'name': 'Sam', 'gender': 'male', 'sport': 'Basketball'},
+#     {'name': 'Emily', 'gender': 'female', 'sport': 'volleyball'},
+# ]
 
 # def foo(*args,**kwargs):
 #     print('args: ',args,'kwargs: ',kwargs)
@@ -212,3 +212,259 @@ friends = [
 #         dic[uniqueKey] = result  
 #     return dic
 # print(combine_dicts(dict_1,dict_2,dict_3))
+
+
+
+
+#Recursion
+#Task 2
+
+# def linear_seq(sequence):
+#     l = []
+#     for item in sequence:
+#         if type(item) != int:
+#            l.extend(linear_seq(item))
+#         else:
+#             l.append(item)
+#     return l
+# print(linear_seq([1,2,3,[4,5, (6,7)]]))
+
+#Namespaces
+
+# def explicit(s:str):
+#     name  = s
+#     def implicit(s):
+#         s = name
+#         print(s)
+#     implicit(name)
+# explicit('Izzat')
+
+#Decorators
+
+
+
+# def myDec(cool):
+#     def wrapper():
+#         print('It\'s hot')
+#         cool()
+#         print('It is cold now')
+#     return wrapper
+# @myDec
+# def my_func():
+#     print('Im cool')
+
+# my_func()
+# def one_adder(func):
+#     def wrapper(x,y):
+#        print(func(x,y)+1)
+#     return wrapper
+
+# @one_adder
+# def adder(n1,n2):
+#     return n1+n2
+
+# adder(1,2)
+
+# def square(func):
+#     def wrapper(*numbers):
+#         print(func(*numbers)**2)
+#     return wrapper
+
+# @square
+# def sum(*args):
+#     sum = 0
+#     for i in args:
+#         sum+=i
+#     return sum
+# sum(1,2,1,4)
+import time as t
+# now = t.time()
+
+# print(f'Answer:{add(2,3)}\nExecution time:{t.time()-now}')
+# print(t.time())
+# print(t.localtime(1669810533.278775))
+# from typing import Dict
+
+# execution_time: dict[str, float] = {}
+# def time_decorator(fn):
+#     """
+#     Create a decorator function `time_decorator`
+#     which has to calculate decorated function execution time
+#     and put this time value to `execution_time` dictionary where `key` is
+#     decorated function name and `value` is this function execution time.
+#     """
+#     def wrapper(x,y):
+#         start = t.time()
+#         fn(x,y)
+#         ex_time = t.time() - start
+#         execution_time[f'{fn}'] = ex_time
+#     return wrapper
+# @time_decorator
+# def add(n,m):
+#     return n+m
+# add(1,2)
+# print(execution_time)
+# from typing import Dict
+# execution_time: Dict[str, float] = {}
+
+
+# def time_decorator(fn):
+#     """
+#     Create a decorator function `time_decorator`
+#     which has to calculate decorated function execution time
+#     and put this time value to `execution_time` dictionary where `key` is
+#     decorated function name and `value` is this function execution time.
+#     """
+#     def wrapper(x,y):
+#         start = t.time()
+#         fn(x,y)
+#         ex_time = t.time() - start
+#         execution_time[f'{fn}'] = ex_time
+#         print(execution_time)
+#     return wrapper
+
+# @time_decorator
+# def add(n,m):
+#     t.sleep(0.2)
+#     return n+m
+# add(10,20)
+# print(add.__name__)
+
+# def input_taker(func):
+#     def wrapper():
+#         l = []
+#         a = int(input("Number: "))
+#         while a != 0:
+#             l.append(a)
+#             a = int(input("Number: "))
+#         print(func(l))
+#     return wrapper
+
+# @input_taker
+# def square(args):
+#     return list(map(lambda a: a**2,args))
+# square()
+
+# @input_taker
+# def mult_by_2(args):
+
+#     return list(map(lambda b: 2*b,args))
+
+# mult_by_2()
+
+# def perfomance(func):
+#     def wrapper(*args, **kwargs):
+#         start  = t.time()
+#         func(*args,**kwargs)
+#         stop = t.time()
+#         print(f'Time taken: {stop - start} seconds')
+#     return wrapper
+
+# @perfomance
+# def some():
+#     for i in range(1000000000):
+#         i*5
+# some()
+#Task 2 
+# def log(fn):
+#     def wrapper(*args,**kwargs):
+#         start = t.time()
+#         fn(*args,**kwargs)
+#         stop = t.time()
+#         l = ['a','b','c','d']; argstring = ''; kwargstring = ''
+#         for i in range(len(args)):
+#             argstring = argstring + f'{l[i]}={args[i]}, '
+#         for i in kwargs.items():
+#             kwargstring = kwargstring + f'{i[0]}={i[1]}, '
+#         if len(kwargs)== 0:
+#             log_text = f'{fn.__name__}; args: {argstring[:len(argstring)-2]}; execution time: {round(stop-start,2)} sec.'
+#         else:
+#             log_text = f'{fn.__name__}; args: {argstring[:len(argstring)-2]}; kwargs: {kwargstring[:len(kwargstring)-2]}; execution time: {round(stop-start,2)} sec.' 
+#         out = open('log.txt','a')
+#         out.write(f'{log_text}\n')
+#         out.close()
+#     return wrapper
+ 
+# @log
+# def foo(*args,**kwargs):
+#     pass
+# foo(1,2,c=3,d=4)
+
+
+# def validate(fn):
+#     '''
+#     Add corresponded arguments and implementation here. 
+#     '''
+#     def wrapper(a,b,c):
+#         t = a,b,c; flag = True
+#         for i in t:
+#             if i<0 or i>256:
+#                 flag = False
+#         if flag == True:
+#             return fn(a,b,c)
+#         else:
+#             return "Function call is not valid!"
+#     return wrapper
+        
+
+# @validate
+# def set_pixel(x: int, y: int, z: int) -> str:
+#     return "Pixel created!"
+
+
+# print(set_pixel(256,256,257))
+
+#Task 4
+
+# def decorator_apply(lambda_func):
+#     def overwrapper(fn):
+#         def wrapper(n):
+#             return lambda_func(n)
+#         return wrapper
+#     return overwrapper
+   
+
+# @decorator_apply(lambda user_id:user_id+1)
+# def add(num):
+#     return num
+
+# print(add(42))
+
+# x = 1 
+# def foo(): 
+#     x = 2 
+#     def bar(): 
+#         global x 
+#         print(x) 
+#     bar() 
+# x = 3 
+# foo() 
+
+# def split(data: str, sep=None, maxsplit=-1)->list:
+#     """
+#     Add your code here or call it from here   
+#     """
+#     temps = ''; templ = []
+#     data = data.replace(sep,' ')
+#     for d in data:
+#         if d.isspace():
+#             continue
+#         templ.append(d)
+#     return templ
+# print(split('aqbobal','b'))
+s = 'adf<>adf<>adf<>adf'
+print(s.split('<>'))
+sep = '<>'
+sl = []
+i = None  # start of 'word'
+
+for j, c in enumerate(s + ' '):
+    if c == sep:
+        if i is not None:
+            sl.append(s[i:j])
+            i = None
+    else:
+        if i is None:
+            i = j
+print(sl)
+
