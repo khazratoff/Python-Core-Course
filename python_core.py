@@ -277,7 +277,7 @@
 #         sum+=i
 #     return sum
 # sum(1,2,1,4)
-import time as t
+# import time as t
 # now = t.time()
 
 # print(f'Answer:{add(2,3)}\nExecution time:{t.time()-now}')
@@ -452,19 +452,86 @@ import time as t
 #         templ.append(d)
 #     return templ
 # print(split('aqbobal','b'))
-s = 'adf<>adf<>adf<>adf'
-print(s.split('<>'))
-sep = '<>'
-sl = []
-i = None  # start of 'word'
 
-for j, c in enumerate(s + ' '):
-    if c == sep:
-        if i is not None:
-            sl.append(s[i:j])
-            i = None
-    else:
-        if i is None:
-            i = j
-print(sl)
+# OOP basics
+# class Animal:
+#     origin = 'Earth'
+#     def __init__(self,type,number_of_legs,sound) -> None:
+#         self.type = type
+#         self.number_of_legs = number_of_legs
+#         self.sound = sound
+#     def sounds(self):
+#         print(f'The {self.type} sounds {self.sound}')
 
+# class Bird(Animal):
+#     def __init__(self, type:str, number_of_legs:int, sound:str,fly:bool) -> None:
+#         super().__init__(type, number_of_legs, sound)
+#         self._fly = fly
+#     def can_fly(self):
+#         if self._fly:
+#             print(f'{self.type} can fly')
+#         else:
+#             print(f'{self.type} cannot fly')
+
+# penguin = Bird('penguin',2,'shhhhh',False)
+# penguin.sounds(); penguin.can_fly()
+# print(penguin._fly)
+
+#Task 2 
+# class SchoolMember:
+#     def __init__(self,name:str,age:int) -> None:
+#         self.name = name
+#         self.age = age
+
+# class Teacher(SchoolMember):
+#     def __init__(self, name: str, age: int, salary:int) -> None:
+#         super().__init__(name, age)
+#         self.salary = salary
+#     def show(self):
+#         return f"Name: {self.name}, Age: {self.age}, Salary: {self.salary}"
+
+# class Student(SchoolMember):
+#     def __init__(self, name: str, age: int, grades:int) -> None:
+#         super().__init__(name, age)
+#         self.grades = grades
+#     def show(self):
+#         return f"Name: {self.name}, Age: {self.age}, Grades: {self.grades}"
+
+# teacher = Teacher("Mr.Snape", 40, 3000)
+# print(teacher.name)
+# persons = [teacher, Student("Harry", 16, 75)]
+# for person in persons:
+#     print(person.show())
+
+# import math
+# Task 3
+# class Counter:
+#     def __init__(self,start = 0, stop = math.inf) -> None:
+#         self.start = start
+#         self.stop = stop
+#     def increment(self):
+#         if self.stop > self.start:
+#             self.start+=1
+#         else:
+#             print(f'The maximal value is reached.')
+#     def get(self):
+#         print(self.start)
+
+# class HistoryDict:
+#     def __init__(self,dic:dict) -> None:
+#         self.dic = dic
+#         self.l = []
+#     def set_value(self,key:str,value:int):
+#         self.dic[key]=value
+#         if len(self.l)<5:
+#             self.l.append(key)
+#         else:
+#             self.l.remove(self.l[0])
+#             self.l.append(key)
+#     def get_history(self):
+#         return self.l
+# d = HistoryDict({"foo":42})
+# keys = ['b', 'c', 'd', 'e', 'f']
+# for key in keys:
+#     d.set_value(key, 42)
+# print(d.get_history())
