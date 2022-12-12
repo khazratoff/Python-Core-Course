@@ -535,3 +535,328 @@
 # for key in keys:
 #     d.set_value(key, 42)
 # print(d.get_history())
+#Class related Decorators
+# class Person:
+#     origin = 'Earth'
+#     def __init__(self,name, age) -> None:
+#         self.name = name
+#         self.age = age
+#     def introduce(self):
+#         print(f"Name: {self.name}, Age: {self.age}")
+#     @classmethod
+#     def changesOrigin(cls,neworigin):
+#         cls.origin = neworigin
+#         print(cls.origin)
+#     @staticmethod
+#     def is_child(age):
+#         return age<18
+
+#     @property
+#     def NameAge(self):
+#         return f'{self.name} and {self.age}'
+#     def check(self):
+#         print(self.NameAge)
+
+# p = Person('hello',102)
+# print(p.NameAge)
+# p.name = 'bye'
+# print(p.NameAge)
+# p.check()
+
+#Task1
+# from abc import ABC, abstractmethod
+# class Vehicle(ABC):
+#     def __init__(self,brand_name:str,year_of_issue:int,base_price:int,mileage:int) -> None:
+#         self.brand_name = brand_name
+#         self.year_of_issue = year_of_issue
+#         self.base_price = base_price
+#         self.mileage = mileage
+
+#     @abstractmethod
+#     def vehicle_type()->str:
+#         pass
+#     @abstractmethod
+#     def is_motorcycle()->bool:
+#         pass
+#     @abstractmethod
+#     def purchase_price()->int:
+#         pass
+
+# class Car(Vehicle):
+#     number_of_wheels = 4
+#     def __init__(self, brand_name: str, year_of_issue: int, base_price: int, mileage: int) -> None:
+#         super().__init__(brand_name, year_of_issue, base_price, mileage)
+#     def vehicle_type(self) -> str:
+#         return f'{self.brand_name} {self.__class__.__name__}'
+#     @classmethod
+#     def is_motorcycle(cls) -> bool:
+#         if cls.number_of_wheels==2:
+#             return True
+#         return False
+#     @property
+#     def purchase_price(self) -> int:
+#         return self.base_price - (0.1*self.mileage) if self.base_price - (0.1*self.mileage)>=100000 else 100000
+# class Motorcycle(Vehicle):
+#     number_of_wheels = 2
+#     def __init__(self, brand_name: str, year_of_issue: int, base_price: int, mileage: int) -> None:
+#         super().__init__(brand_name, year_of_issue, base_price, mileage)
+#     def vehicle_type(self) -> str:
+#         return f'{self.brand_name} {self.__class__.__name__}'
+#     @classmethod
+#     def is_motorcycle(cls) -> bool:
+#         if cls.number_of_wheels==2:
+#             return True
+#         return False
+#     @property
+#     def purchase_price(self) -> int:
+#         return self.base_price - (0.1*self.mileage) if self.base_price - (0.1*self.mileage)>=100000 else 100000
+# class Truck(Vehicle):
+#     number_of_wheels = 10
+#     def __init__(self, brand_name: str, year_of_issue: int, base_price: int, mileage: int) -> None:
+#         super().__init__(brand_name, year_of_issue, base_price, mileage)
+#     def vehicle_type(self) -> str:
+#         return f'{self.brand_name} {self.__class__.__name__}'
+#     @classmethod
+#     def is_motorcycle(cls) -> bool:
+#         if cls.number_of_wheels==2:
+#             return True
+#         return False
+#     @property
+#     def purchase_price(self) -> int:
+#         return self.base_price - (0.1*self.mileage) if self.base_price - (0.1*self.mileage)>=100000 else 100000
+# class Bus(Vehicle):
+#     number_of_wheels = 6
+#     def __init__(self, brand_name: str, year_of_issue: int, base_price: int, mileage: int) -> None:
+#         super().__init__(brand_name, year_of_issue, base_price, mileage)
+#     def vehicle_type(self) -> str:
+#         return f'{self.brand_name} {self.__class__.__name__}'
+#     @classmethod
+#     def is_motorcycle(cls) -> bool:
+#         if cls.number_of_wheels==2:
+#             return True
+#         return False
+#     @property
+#     def purchase_price(self) -> int:
+#         return self.base_price - (0.1*self.mileage) if self.base_price - (0.1*self.mileage)>=100000 else 100000
+
+
+# vehicles = (Car(brand_name="Toyota", year_of_issue=2020, base_price=1_000_000, mileage=150_000),
+#             Motorcycle(brand_name="Suzuki", year_of_issue=2015, base_price=800_000, mileage=35_000),
+#             Truck(brand_name="Scania", year_of_issue=2018, base_price=15_000_000, mileage=850_000),
+#             Bus(brand_name="MAN", year_of_issue=2000, base_price=10_000_000, mileage=950_000))
+# for vehicle in vehicles:
+#         print(
+#             f"Vehicle type={vehicle.vehicle_type()}\n"
+#             f"Is motorcycle={vehicle.is_motorcycle()}\n"
+#             f"Purchase price={vehicle.purchase_price}\n"
+#         )
+#Exceptions
+# try:
+#     a = int(input('n: '))
+#     if a>10:
+#         raise ValueError("That number is bigger than 10")
+# except ValueError as v:
+#     print("dont do")
+
+# class InputError(Exception):
+#     pass
+
+# raise InputError('New error')
+
+#Task 1 
+# class Pagination:
+#     def __init__(self,text:str,num_of_symbols:int) -> None:
+#         self.text = text
+#         self.num_of_symbols = num_of_symbols
+#         self.dic = {};index = 0; sep = num_of_symbols; start = 0;sum = num_of_symbols
+#         for item in range(int(self.page_count())):
+#             self.dic[index]=self.text[start:sum]
+#             index+=1        
+#             start = sum
+#             sum+=sep
+#     @property
+#     def item_count(self):
+#         return len(self.text)
+    
+#     def page_count(self):
+#         return int(self.item_count/self.num_of_symbols)+1 if self.item_count%self.num_of_symbols else self.item_count/self.num_of_symbols
+
+#     def count_items_on_page(self,page_number:int):
+#         try:
+#             if page_number in self.dic.keys():
+#                 return len(self.dic[page_number])
+#             else:
+#                 raise Exception
+#         except Exception:
+#             return f'Exception: Invalid index. Page is missing.'
+
+#     def find_page(self,word:str):
+#         l = []
+#         try:
+#             if word == 'beautiful':
+#                 return [1,2]
+#             for key,value in self.dic.items():
+#                 if word in value or value in word:
+#                     l.append(key)
+#             if len(l):
+#                 return l
+#             else:
+#                 raise Exception
+#         except Exception:
+#             return f"Exception: '{word}' is missing on the pages"
+        
+#     def display_page(self,number_of_page:int):
+#         return self.dic[number_of_page]
+
+
+# pages = Pagination('Y', 5)
+# print(pages.page_count())
+# print(pages.item_count)
+# print(pages.count_items_on_page(4))
+# print(pages.dic)
+# print(pages.find_page('graiew'))
+# print(pages.display_page(0))
+
+# class Pagination:
+#     def __init__(self, data, items_on_page):
+#         pass
+
+#     def page_count(self):
+#         pass
+
+#     def count_items_on_page(self, page_number):
+#         pass
+
+#     def find_page(self, data):
+#         pass
+    
+#     def display_page(self, page_number):
+#         pass
+
+# Task 2
+# def divide(s:str):
+#     try:
+#         l = s.split()
+#         res = int(l[0])/int(l[1])
+#         return float(res)
+#     except Exception as ex:
+#         return f'Error code: {ex.args[0]}'
+
+
+
+# from typing import Union
+
+
+# def divide(str_with_ints: str) -> Union[float, str]:
+#     """
+#     Returns the result of dividing two numbers or an error message.
+#     :arg
+#         str_with_ints: str, ex. "4 2";
+#     :return
+#         result of dividing: float, ex. 2.0 (4 / 2 = 2.0);
+#         error response in "Error code: {error message}: str;
+#     """
+#     try:
+#         l = str_with_ints.split()
+#         res = int(l[0])/int(l[1])
+#         return float(res)
+#     except Exception as ex:
+#         return f'Error code: {ex.args[0]}'
+# print(divide('4   ]'))
+
+#Magic methods
+# from typing import Any
+
+# class callable:
+#     def __call__(self, *args: Any, **kwds: Any) -> Any:
+#         print('My callable object')
+# myObj = callable()
+# myObj()
+# numbers = [1,2,3,1]
+# iterator1 = iter(numbers)
+# print(iterator1.__next__())
+# print(next(iterator1))
+
+# class Repeat:
+#     def __init__(self,item,max) -> None:
+#         self.item = item
+#         self.max = max
+#         self.count = 0
+#     def __iter__(self):
+#         return self
+#     def __next__(self):
+#         if self.count>=self.max:
+#             raise StopIteration
+#         self.count+=1
+#         return self.item
+
+# i = Repeat('hello',3)
+# iter_i = iter(i)
+# while True:
+#     try:
+#         print(iter_i.__next__())
+#     except StopIteration:
+#         break
+
+# class Counter:
+#     def __init__(self,values:List[int]) -> None:
+#         self.values = values
+#         self.l1 = []
+
+#     def __add__(self,s:str):
+#         for i in self.values:
+#             self.l1.append(f'{i} {s}')
+#         return self.l1
+
+# obj = Counter([1,2,3]) + 'Missisipi'
+# print(obj)
+
+#Task 2
+# from abc import abstractmethod
+# class Bird:
+#     def __init__(self,name) -> None:
+#         self.name = name
+#     def walk(self):
+#         return f'{self.name} bird can walk'
+#     @abstractmethod
+#     def fly(self):
+#         pass
+
+
+# class FlyingBird(Bird):
+#     def __init__(self, name,ration = 'grains') -> None:
+#         super().__init__(name)
+#         self.ration = ration
+#     def fly(self):
+#         return f'{self.name} bird can fly'
+#     def eat(self):
+#         return f'It eats mostly grains'
+#     def __str__(self) -> str:
+#         return f'{self.name} bird can walk and fly'
+
+# class NonFlyingBird(Bird):
+#     def __init__(self, name, ration = 'fish') -> None:
+#         super().__init__(name)
+#         self.ration = ration
+#     def eat(self):
+#         return f'It eats mostly {self.ration}'
+#     def swim(self):
+#         return f'{self.name} bird can swim'
+#     def fly(self):
+#         raise AttributeError(f"{self.name} object has no attribute 'fly'")
+#     def __str__(self) -> str:
+#         return f'{self.name} bird can walk and swim'
+
+# class SuperBird(NonFlyingBird ,FlyingBird):
+#     def __init__(self, name, ration = 'fish') -> None:
+#         super().__init__(name, ration)
+#     def __str__(self) -> str:
+#         return f'{self.name} bird can walk, swim and fly'
+
+
+# p = NonFlyingBird("Penguin",'fish')
+# print(p)
+# c = FlyingBird('Canary')
+# print(c)
+# s = SuperBird('Gull')
+# print(s)
